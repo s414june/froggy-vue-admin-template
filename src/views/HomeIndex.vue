@@ -44,7 +44,7 @@ const selectedCategories = ref(["Marketing"])
 </script>
 
 <template>
-	<Button>save</Button>
+	<Button class="rounded-none">save</Button>
 	<div>
 		<Checkbox v-model="checked" :binary="true" />
 	</div>
@@ -58,10 +58,7 @@ const selectedCategories = ref(["Marketing"])
 	</div>
 	<div class="card flex justify-center">
 		<div class="flex flex-col gap-3">
-			<div
-				v-for="category of categories"
-				:key="category.key"
-			>
+			<div v-for="category of categories" :key="category.key">
 				<Checkbox
 					v-model="selectedCategories"
 					:inputId="category.key"

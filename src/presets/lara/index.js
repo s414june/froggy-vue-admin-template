@@ -1,4 +1,4 @@
-import global from './global.js';
+// import global from './global.js';
 import autocomplete from './autocomplete';
 import calendar from './calendar';
 import cascadeselect from './cascadeselect';
@@ -88,7 +88,7 @@ import tag from './tag';
 import terminal from './terminal';
 
 export default {
-    global,
+    // global,
     directives: {
         tooltip,
         badgedirective,
