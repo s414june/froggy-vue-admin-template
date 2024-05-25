@@ -1,37 +1,42 @@
 <template>
 	<Menu
 		:model="items"
-		class="w-[15rem] h-full shadow-lg menu ease-in-out duration-300"
-		:class="{ '!w-[16rem]': menuHighlight }">
+		class="w-[15rem] h-full shadow-lg menu ease-in-out duration-300 min-w-fit"
+		:class="{
+			'!w-[5rem]': menuHighlight && menuShrink,
+			'!w-[4rem]': !menuHighlight && menuShrink,
+		}">
 		<template #start>
-			<div class="flex items-center px-2 py-3 justify-between">
+			<div
+				class="flex items-center px-2 py-3 justify-between"
+				:class="{ 'flex-col': menuShrink }">
 				<div class="flex items-center gap-1">
 					<img src="@/assets/logo.png" class="w-[30px] mr-1" />
-					<span class="font-medium text-xl font-semibold text-primary"
+					<span
+						class="font-medium text-xl font-semibold text-primary"
+						v-show="!menuShrink"
 						>Froggy<span class="text-bluegray-900">App</span></span
 					>
 				</div>
 				<div
 					class="grow"
+					:class="{ '-order-1 mb-2 w-full flex justify-center': menuShrink }"
 					@mouseover="menuHighlight = true"
-					@mouseleave="menuHighlight = false">
+					@mouseleave="menuHighlight = false"
+					@click="toggleMenu">
 					<Hamburger></Hamburger>
 				</div>
 			</div>
 		</template>
 		<template #submenuheader="{ item }">
-			<span class="text-primary font-bold">{{ item.label }}</span>
+			<span class="text-primary font-bold" v-show="!menuShrink">{{
+				item.label
+			}}</span>
 		</template>
 		<template #item="{ item, props }">
 			<a v-ripple class="flex align-items-center" v-bind="props.action">
 				<span :class="item.icon" />
-				<span class="ml-2">{{ item.label }}</span>
-				<Badge v-if="item.badge" class="ml-auto" :value="item.badge" />
-				<span
-					v-if="item.shortcut"
-					class="ml-auto border-1 surface-border border-round surface-100 text-xs p-1"
-					>{{ item.shortcut }}</span
-				>
+				<span class="ml-2" v-show="!menuShrink">{{ item.label }}</span>
 			</a>
 		</template>
 	</Menu>
@@ -47,6 +52,7 @@ onBeforeMount(() => {
 })
 
 const menuHighlight = ref(false)
+const menuShrink = ref(false)
 
 const items = ref([
 	{
@@ -91,6 +97,10 @@ const items = ref([
 		separator: true,
 	},
 ])
+
+function toggleMenu() {
+	menuShrink.value = !menuShrink.value
+}
 </script>
 <style lang="scss">
 ::v-deep {
