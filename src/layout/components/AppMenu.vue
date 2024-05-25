@@ -1,12 +1,23 @@
 <template>
-	<Menu :model="items" class="w-full md:w-15rem h-full shadow-lg">
+	<Menu
+		:model="items"
+		class="w-[15rem] h-full shadow-lg menu ease-in-out duration-300"
+		:class="{ '!w-[16rem]': menuHighlight }">
 		<template #start>
-			<span class="inline-flex align-items-center gap-1 px-2 py-3">
-				<img src="@/assets/logo.png" class="w-2 mr-1" />
-				<span class="font-medium text-xl font-semibold text-primary"
-					>Froggy<span class="text-bluegray-900">App</span></span
-				>
-			</span>
+			<div class="flex items-center px-2 py-3 justify-between">
+				<div class="flex items-center gap-1">
+					<img src="@/assets/logo.png" class="w-[30px] mr-1" />
+					<span class="font-medium text-xl font-semibold text-primary"
+						>Froggy<span class="text-bluegray-900">App</span></span
+					>
+				</div>
+				<div
+					class="grow"
+					@mouseover="menuHighlight = true"
+					@mouseleave="menuHighlight = false">
+					<Hamburger></Hamburger>
+				</div>
+			</div>
 		</template>
 		<template #submenuheader="{ item }">
 			<span class="text-primary font-bold">{{ item.label }}</span>
@@ -28,11 +39,14 @@
 
 <script setup>
 import { ref, onBeforeMount } from "vue"
+import Hamburger from "@/components/Hamburger.vue"
 // import { useCountHeight } from "@/composables/countHeight.ts"
 
 onBeforeMount(() => {
 	// useCountHeight()
 })
+
+const menuHighlight = ref(false)
 
 const items = ref([
 	{
@@ -78,3 +92,10 @@ const items = ref([
 	},
 ])
 </script>
+<style lang="scss">
+::v-deep {
+	.menu-btn:hover .menu {
+		width: 100px !important;
+	}
+}
+</style>

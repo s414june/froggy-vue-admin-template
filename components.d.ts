@@ -11,6 +11,7 @@ declare module 'vue' {
     Badge: typeof import('primevue/badge')['default']
     BadgeIcon: typeof import('./src/components/BadgeIcon.vue')['default']
     Button: typeof import('primevue/button')['default']
+    Hamburger: typeof import('./src/components/Hamburger.vue')['default']
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
     IconCommunity: typeof import('./src/components/icons/IconCommunity.vue')['default']
     IconDocumentation: typeof import('./src/components/icons/IconDocumentation.vue')['default']
