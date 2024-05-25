@@ -34,7 +34,11 @@
 			}}</span>
 		</template>
 		<template #item="{ item, props }">
-			<a v-ripple class="flex align-items-center" v-bind="props.action">
+			<a
+				v-ripple
+				class="flex align-items-center"
+				v-bind="props.action"
+				:class="{ 'justify-center': menuShrink }">
 				<span :class="item.icon" />
 				<span class="ml-2" v-show="!menuShrink">{{ item.label }}</span>
 			</a>
