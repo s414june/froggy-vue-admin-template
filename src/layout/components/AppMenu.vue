@@ -24,7 +24,7 @@
 					@mouseover="menuHighlight = true"
 					@mouseleave="menuHighlight = false"
 					@click="toggleMenu">
-					<Hamburger></Hamburger>
+					<Hamburger :shrink="menuShrink"></Hamburger>
 				</div>
 			</div>
 		</template>

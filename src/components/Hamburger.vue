@@ -1,6 +1,9 @@
+<script setup>
+const props = defineProps(["shrink"])
+</script>
 <template>
 	<div class="flex justify-end menu-btn-outside">
-		<div class="menu-btn">
+		<div class="menu-btn" :class="{ shrink: props.shrink }">
 			<div></div>
 			<div></div>
 			<div></div>
@@ -25,7 +28,7 @@
 	transition: 0.3s;
 }
 .menu-btn-outside:hover {
-	.menu-btn {
+	.menu-btn:not(.shrink) {
 		div {
 			transform: scale(1.1);
 			transition: 0.3s;
