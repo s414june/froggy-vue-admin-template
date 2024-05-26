@@ -22,7 +22,7 @@
 				listStyle="max-height:250px">
 				<template #option="slotProps">
 					<div class="flex align-items-center px-2 py-1">
-						<i class="pi mr-2" :class="slotProps.option.icon"></i>
+						<i class="mr-2" :class="slotProps.option.icon"></i>
 						<div>{{ slotProps.option.label }}</div>
 					</div>
 				</template>
@@ -38,11 +38,11 @@ const selectedAction = ref(null)
 const actions = ref([
 	{
 		label: "設定",
-		icon: "pi-cog",
+		icon: "pi pi-cog",
 	},
 	{
 		label: "登出",
-		icon: "pi-sign-out",
+		icon: "pi pi-sign-out",
 	},
 ])
 </script>

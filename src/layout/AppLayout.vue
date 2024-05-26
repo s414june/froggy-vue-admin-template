@@ -12,8 +12,10 @@ import AppSidebar from "@/layout/components/AppSidebar.vue"
 			</div>
 			<div class="w-full flex flex-col">
 				<AppTopBar></AppTopBar>
-				<div class="layout-main grow overflow-auto">
-					<router-view></router-view>
+				<div class="layout-main grow overflow-auto flex flex-col">
+					<div class="grow">
+						<router-view></router-view>
+					</div>
 					<AppFooter></AppFooter>
 				</div>
 			</div>

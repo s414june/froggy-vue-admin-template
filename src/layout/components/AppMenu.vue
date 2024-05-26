@@ -59,20 +59,15 @@ const menuShrink = ref(false)
 
 const items = ref([
 	{
-		separator: true,
-	},
-	{
-		label: "Documents",
+		label: "首頁",
 		items: [
 			{
-				label: "New",
-				icon: "pi pi-plus",
-				shortcut: "⌘+N",
+				label: "儀表板",
+				icon: "pi pi-chart-bar",
 			},
 			{
 				label: "Search",
 				icon: "pi pi-search",
-				shortcut: "⌘+S",
 			},
 		],
 	},
@@ -96,19 +91,9 @@ const items = ref([
 			},
 		],
 	},
-	{
-		separator: true,
-	},
 ])
 
 function toggleMenu() {
 	menuShrink.value = !menuShrink.value
 }
 </script>
-<style lang="scss">
-::v-deep {
-	.menu-btn:hover .menu {
-		width: 100px !important;
-	}
-}
-</style>

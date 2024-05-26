@@ -1,7 +1,7 @@
 <template>
 	<Button
 		class="relative overflow-visible hover:surface-200 p-[10px] rounded-full z-1">
-		<span class="pi text-lg" :class="[props.icon]"> </span>
+		<span class="text-lg" :class="[props.icon]"> </span>
 		<div class="absolute">
 			<Badge
 				:value="props.tagText"
