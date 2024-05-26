@@ -1,33 +1,34 @@
 <template>
-	<div class="card shadow-lg">
+	<nav class="card shadow-lg" id="TopBar">
 		<Menubar class="px-3">
-			<template #start> <h1 class="font-bold">Home</h1> </template>
+			<template #start>
+				<div class="ml-2">
+					<h1 class="font-bold">Home</h1>
+				</div>
+			</template>
 			<template #end>
-				<div class="flex align-items-center gap-4">
-					<div class="flex align-items-center gap-2">
-						<BadgeIcon icon="pi-bell" tag-color="danger" tag-text="3" />
-						<BadgeIcon icon="pi-envelope" tag-color="success" tag-text="5+" />
+				<div class="flex items-center gap-4">
+					<div class="relative h-[50px]">
+						<div class="flex items-center gap-2 h-full">
+							<LayoutNotion tag-color="danger" tag-text="3" />
+							<LayoutMessage tag-color="success" tag-text="5+" />
+						</div>
 					</div>
-					<Button
-						class="relative overflow-hidden flex align-items-center p-1 pl-2 text-color hover:surface-200 rounded-lg">
-						<Avatar
-							image="https://primefaces.org/cdn/primevue/images/avatar/amyelsner.png"
-							class="mr-2"
-							shape="circle" />
-						<span class="inline-flex flex-column pl-2 items-end">
-							<span class="text-sm">Admin</span>
-							<span class="font-bold">Amy Elsner</span>
-						</span>
-					</Button>
+					<div class="relative">
+						<LayoutUser></LayoutUser>
+					</div>
 				</div>
 			</template>
 		</Menubar>
-	</div>
+	</nav>
 </template>
 
 <script setup>
 import { ref } from "vue"
 import BadgeIcon from "@/components/BadgeIcon.vue"
+import LayoutNotion from "@/components/LayoutNotion.vue"
+import LayoutMessage from "@/components/LayoutMessage.vue"
+import LayoutUser from "@/components/LayoutUser.vue"
 
 const items = ref([
 	{

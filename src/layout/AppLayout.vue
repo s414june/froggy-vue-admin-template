@@ -6,16 +6,16 @@ import AppSidebar from "@/layout/components/AppSidebar.vue"
 
 <template>
 	<div>
-		<div class="flex h-screen">
+		<div class="flex h-screen w-full fixed">
 			<div class="layout-sidebar z-5">
 				<AppSidebar></AppSidebar>
 			</div>
 			<div class="w-full flex flex-col">
 				<AppTopBar></AppTopBar>
-				<div class="layout-main grow">
+				<div class="layout-main grow overflow-auto">
 					<router-view></router-view>
+					<AppFooter></AppFooter>
 				</div>
-				<AppFooter></AppFooter>
 			</div>
 		</div>
 	</div>

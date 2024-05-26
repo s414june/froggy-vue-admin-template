@@ -36,7 +36,7 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-	document.title = to.meta.title?.toString() || "Froggy App"
+	document.title = to.meta.title?.toString() + " | Froggy App" || "Froggy App"
 	next()
 })
 

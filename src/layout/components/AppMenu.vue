@@ -35,7 +35,6 @@
 		</template>
 		<template #item="{ item, props }">
 			<a
-				v-ripple
 				class="flex align-items-center"
 				v-bind="props.action"
 				:class="{ 'justify-center': menuShrink }">
