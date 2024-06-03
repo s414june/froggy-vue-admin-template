@@ -1,43 +1,26 @@
-import { createRouter, createWebHistory } from "vue-router"
-import AppLayout from "@/layout/AppLayout.vue"
-import AboutView from "@/views/AboutView.vue"
+import {
+	createRouter,
+	createWebHashHistory,
+	createWebHistory,
+} from "vue-router"
+import { staticRouters, errorRouters } from "@/router/modules/staticRouters"
+import { createDynamicRouters } from "@/router/modules/dynamicRouters"
+import { createRouterGuard } from "./guards"
+
+const mode = import.meta.env.VITE_ROUTER_MODE
+
+const routerMode = {
+	hash: () => createWebHashHistory(),
+	web: () => createWebHistory(),
+}
 
 const router = createRouter({
-	history: createWebHistory(import.meta.env.BASE_URL),
-	routes: [
-		{
-			path: "/root",
-			name: "root",
-			component: AppLayout,
-			redirect: "/",
-			meta: {
-				title: "Froggy App",
-			},
-			children: [
-				{
-					path: "/",
-					name: "home",
-					component: AboutView,
-					meta: {
-						title: "Home",
-					},
-				},
-				{
-					path: "/about",
-					name: "about",
-					component: AboutView,
-					meta: {
-						title: "About",
-					},
-				},
-			],
-		},
-	],
+	history: routerMode[mode](),
+	routes: [...staticRouters, ...errorRouters],
+	scrollBehavior: () => ({ left: 0, top: 0 }),
 })
 
-router.beforeEach((to, from, next) => {
-	document.title = to.meta.title?.toString() + " | Froggy App" || "Froggy App"
-	next()
-})
+await createDynamicRouters(router)
+await createRouterGuard(router)
 
 export default router

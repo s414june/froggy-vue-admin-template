@@ -1,14 +1,28 @@
 {
-  "files": [],
-  "references": [
-    {
-      "path": "./tsconfig.node.json"
-    },
-    {
-      "path": "./tsconfig.app.json"
-    },
-    {
-      "path": "./tsconfig.vitest.json"
-    }
-  ]
+	"extends": "@tsconfig/node20/tsconfig.json",
+	"include": [
+		"vite.config.*",
+		"vitest.config.*",
+		"cypress.config.*",
+		"nightwatch.conf.*",
+		"playwright.config.*",
+		"src/**/*.ts",
+		"src/**/*.tsx",
+		"src/**/*.vue"
+	],
+	"compilerOptions": {
+		"noImplicitAny": false,
+		"composite": true,
+		"noEmit": true,
+		"tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
+		"module": "ESNext",
+		"moduleResolution": "node",
+		"types": ["vite/client"],
+		"lib": ["ES2020", "DOM", "DOM.Iterable"],
+		"resolveJsonModule": true,
+		"baseUrl": ".",
+		"paths": {
+			"@/*": ["src/*"]
+		}
+	}
 }
