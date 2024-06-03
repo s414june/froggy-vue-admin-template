@@ -10,16 +10,23 @@ import "primeicons/primeicons.css"
 import "primeflex/primeflex.css"
 
 import App from "./App.vue"
-import router from "./router"
+import initRouter from "./router"
 
-const app = createApp(App)
+async function initApp() {
+	const router = await initRouter()
+	const app = createApp(App)
+	app.use(router)
 
-app.use(createPinia())
-app.use(router)
-app.use(PrimeVue, {
-	unstyled: false,
-	// pt: Lara,
-	ripple: true,
-})
+	app.use(createPinia())
+	app.use(router)
+	app.use(PrimeVue, {
+		unstyled: false,
+		// pt: Lara,
+		ripple: true,
+	})
 
-app.mount("#app")
+	app.mount("#app")
+}
+
+// 调用初始化函数
+initApp()

@@ -14,13 +14,17 @@ const routerMode = {
 	web: () => createWebHistory(),
 }
 
-const router = createRouter({
-	history: routerMode[mode](),
-	routes: [...staticRouters, ...errorRouters],
-	scrollBehavior: () => ({ left: 0, top: 0 }),
-})
+async function initRouter() {
+	const router = createRouter({
+		history: routerMode[mode](),
+		routes: [...staticRouters, ...errorRouters],
+		scrollBehavior: () => ({ left: 0, top: 0 }),
+	})
 
-await createDynamicRouters(router)
-await createRouterGuard(router)
+	await createDynamicRouters(router)
+	createRouterGuard(router)
 
-export default router
+	return router
+}
+
+export default initRouter
