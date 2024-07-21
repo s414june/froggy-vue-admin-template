@@ -16,7 +16,6 @@ export const staticRouters: RouteRecordRaw[] = [
 		path: "/layout",
 		name: "layout",
 		component: () => import("@/layout/AppLayout.vue"),
-		redirect: "/",
 		children: [],
 	},
 ]

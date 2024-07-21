@@ -48,50 +48,18 @@
 <script setup>
 import { ref, onBeforeMount } from "vue"
 import Hamburger from "@/components/Hamburger.vue"
+import { getMenuListItems } from "@/router/modules/menuHandler"
 // import { useCountHeight } from "@/composables/countHeight.ts"
-
-onBeforeMount(() => {
-	// useCountHeight()
-})
 
 const menuHighlight = ref(false)
 const menuShrink = ref(false)
 
-const items = ref([
-	{
-		label: "首頁",
-		items: [
-			{
-				label: "儀表板",
-				icon: "pi pi-chart-bar",
-			},
-			{
-				label: "Search",
-				icon: "pi pi-search",
-			},
-		],
-	},
-	{
-		label: "Profile",
-		items: [
-			{
-				label: "Settings",
-				icon: "pi pi-cog",
-				shortcut: "⌘+O",
-			},
-			{
-				label: "Messages",
-				icon: "pi pi-inbox",
-				badge: 2,
-			},
-			{
-				label: "Logout",
-				icon: "pi pi-sign-out",
-				shortcut: "⌘+Q",
-			},
-		],
-	},
-])
+const items = ref([])
+
+onBeforeMount(async () => {
+	// useCountHeight()
+	items.value = await getMenuListItems()
+})
 
 function toggleMenu() {
 	menuShrink.value = !menuShrink.value
